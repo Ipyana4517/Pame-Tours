@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PameTours | Your Journey Begins Here</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Alpine.js for interactive state -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Swiper CSS & JS for Wildlife Scenery Slider -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: '#1a3b2b',
+              gold: '#c59b27',
+              dark: '#0f241a',
+              sand: '#f8f6f0'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-brand-sand text-gray-800 font-sans antialiased" x-data="{ activePage: 'home', selectedPackage: null, modalOpen: false }">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-brand-green/95 backdrop-blur-md text-white shadow-lg border-b border-brand-gold/20">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3 cursor-pointer" @click="activePage = 'home'">
+        <div class="bg-brand-gold p-2 rounded-full text-brand-green shadow-inner">
+          <i data-lucide="compass" class="w-6 h-6"></i>
+        </div>
+        <span class="text-2xl font-bold tracking-wider">PAME <span class="text-brand-gold">TOURS</span></span>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-wider">
+        <button @click="activePage = 'home'" :class="activePage === 'home' ? 'text-brand-gold border-b-2 border-brand-gold pb-1' : 'hover:text-brand-gold transition-colors'">Home</button>
+        <button @click="activePage = 'packages'" :class="activePage === 'packages' ? 'text-brand-gold border-b-2 border-brand-gold pb-1' : 'hover:text-brand-gold transition-colors'">Packages</button>
+        <button @click="activePage = 'accommodation'" :class="activePage === 'accommodation' ? 'text-brand-gold border-b-2 border-brand-gold pb-1' : 'hover:text-brand-gold transition-colors'">Accommodation</button>
+        <button @click="activePage = 'about'" :class="activePage === 'about' ? 'text-brand-gold border-b-2 border-brand-gold pb-1' : 'hover:text-brand-gold transition-colors'">About Us</button>
+        <button @click="activePage = 'contact'" :class="activePage === 'contact' ? 'text-brand-gold border-b-2 border-brand-gold pb-1' : 'hover:text-brand-gold transition-colors'">Contact Us</button>
+      </nav>
+
+      <a href="https://wa.me/255000000000?text=Hello%20PameTours,%20I%20would%20like%20to%20inquire%20about%20a%20safari!" target="_blank" class="hidden sm:flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-full font-semibold transition-all shadow-md text-sm">
+        <i data-lucide="message-circle" class="w-4 h-4"></i> Chat Expert
+      </a>
+    </div>
+  </header>
+
+  <!-- ==================== HOME PAGE ==================== -->
+  <main x-show="activePage === 'home'" x-transition>
+    <!-- Background Swiper Hero Section -->
+    <section class="relative h-[85vh] w-full overflow-hidden bg-brand-dark">
+      <div class="swiper heroSlider h-full w-full">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide relative">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/50"></div>
+          </div>
+          <div class="swiper-slide relative">
+            <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/50"></div>
+          </div>
+          <div class="swiper-slide relative">
+            <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/50"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute inset-0 z-10 flex flex-col justify-center items-center text-center px-6 text-white">
+        <span class="inline-block px-4 py-1.5 mb-4 text-xs uppercase tracking-widest font-semibold bg-brand-gold/20 text-brand-gold border border-brand-gold/40 rounded-full" data-aos="fade-down">
+          Your Journey Begins Here
+        </span>
+        <h1 class="text-4xl md:text-6xl font-extrabold max-w-4xl tracking-tight leading-tight mb-6" data-aos="zoom-in" data-aos-delay="200">
+          Unforgettable Wildlife Expeditions & Safari Adventures
+        </h1>
+        <p class="text-lg md:text-xl text-gray-200 max-w-2xl mb-8" data-aos="fade-up" data-aos-delay="400">
+          Experience Tanzania’s majestic landscapes, culture, and wildlife across customized Standard, Mid-range, and Luxury safaris.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="600">
+          <button @click="activePage = 'packages'" class="bg-brand-gold hover:bg-yellow-500 text-brand-dark font-bold px-8 py-3.5 rounded-full shadow-lg transition-all">
+            Explore All Packages
+          </button>
+          <button @click="modalOpen = true" class="border border-white/40 hover:border-brand-gold hover:text-brand-gold text-white font-semibold px-8 py-3.5 rounded-full transition-all">
+            Get Free Safari Quote
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages Preview Section -->
+    <section class="py-20 max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-brand-green mb-3">Our Tanzania Safari Packages</h2>
+        <div class="w-16 h-1 bg-brand-gold mx-auto mb-4"></div>
+        <p class="text-gray-600 max-w-xl mx-auto">Choose from tailored itineraries featuring Standard, Mid-Range, and Luxury accommodation options.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Package Card 1 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col" data-aos="fade-up">
+          <div class="h-64 relative">
+            <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+            <span class="absolute top-4 right-4 bg-brand-green text-brand-gold text-xs font-bold px-3 py-1 rounded-full">4 Days</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-2xl font-bold text-brand-green mb-2">4 Days Tanzania Safari Cultural and Expedition</h3>
+              <p class="text-gray-600 text-sm mb-4">Combine iconic national park game drives with authentic cultural immersion with local tribes.</p>
+              
+              <!-- Tiering Badge -->
+              <div class="flex gap-2 my-3">
+                <span class="text-xs bg-gray-100 text-gray-700 font-semibold px-2.5 py-1 rounded">Standard</span>
+                <span class="text-xs bg-amber-100 text-amber-800 font-semibold px-2.5 py-1 rounded">Mid-Range</span>
+                <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-1 rounded">Luxury</span>
+              </div>
+            </div>
+
+            <div class="border-t pt-4 grid grid-cols-1 sm:grid-cols-3 gap-2 text-center">
+              <button @click="activePage = 'packages'; selectedPackage = 1" class="bg-brand-green hover:bg-brand-dark text-white text-xs font-bold py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-1">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i> View Itinerary
+              </button>
+              <button @click="modalOpen = true" class="bg-brand-gold hover:bg-yellow-500 text-brand-dark text-xs font-bold py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-1">
+                <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Get Free Quote
+              </button>
+              <a href="https://wa.me/255000000000?text=Hi%20PameTours,%20I'm%20interested%20in%20the%204%20Days%20Cultural%20Safaris." target="_blank" class="bg-green-600 hover:bg-green-700 text-white text-xs font-bold py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-1">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Chat Expert
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package Card 2 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="100">
+          <div class="h-64 relative">
+            <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+            <span class="absolute top-4 right-4 bg-brand-green text-brand-gold text-xs font-bold px-3 py-1 rounded-full">5 Days</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-2xl font-bold text-brand-green mb-2">5 Days Tour in Tanzania</h3>
+              <p class="text-gray-600 text-sm mb-4">A balanced safari highlight exploring Tarangire, Ngorongoro Crater, and Lake Manyara.</p>
+              
+              <div class="flex gap-2 my-3">
+                <span class="text-xs bg-gray-100 text-gray-700 font-semibold px-2.5 py-1 rounded">Standard</span>
+                <span class="text-xs bg-amber-100 text-amber-800 font-semibold px-2.5 py-1 rounded">Mid-Range</span>
+                <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-1 rounded">Luxury</span>
+              </div>
+            </div>
+
+            <div class="border-t pt-4 grid grid-cols-1 sm:grid-cols-3 gap-2 text-center">
+              <button @click="activePage = 'packages'; selectedPackage = 2" class="bg-brand-green hover:bg-brand-dark text-white text-xs font-bold py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-1">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i> View Itinerary
+              </button>
+              <button @click="modalOpen = true" class="bg-brand-gold hover:bg-yellow-500 text-brand-dark text-xs font-bold py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-1">
+                <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Get Free Quote
+              </button>
+              <a href="https://wa.me/255000000000?text=Hi%20PameTours,%20I'm%20interested%20in%20the%205%20Days%20Tour%20in%20Tanzania." target="_blank" class="bg-green-600 hover:bg-green-700 text-white text-xs font-bold py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-1">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Chat Expert
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package Card 3 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="200">
+          <div class="h-64 relative">
+            <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+            <span class="absolute top-4 right-4 bg-brand-green text-brand-gold text-xs font-bold px-3 py-1 rounded-full">6 Days</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-2xl font-bold text-brand-green mb-2">6 Days Northern Tanzania Safari Expedition</h3>
+              <p class="text-gray-600 text-sm mb-4">Deep dive into the classic Northern Circuit including extensive Serengeti game tracks.</p>
+              
+              <div class="flex gap-2 my-3">
+                <span class="text-xs bg-gray-100 text-gray-700 font-semibold px-2.5 py-1 rounded">Standard</span>
+                <span class="text-xs bg-amber-100 text-amber-800 font-semibold px-2.5 py-1 rounded">Mid-Range</span>
+                <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-1 rounded">Luxury</span>
+              </div>
+            </div>
+
+            <div class="border-t pt-4 grid grid-cols-1 sm:grid-cols-3 gap-2 text-center">
+              <button @click="activePage = 'packages'; selectedPackage = 3" class="bg-brand-green hover:bg-brand-dark text-white text-xs font-bold py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-1">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i> View Itinerary
+              </button>
+              <button @click="modalOpen = true" class="bg-brand-gold hover:bg-yellow-500 text-brand-dark text-xs font-bold py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-1">
+                <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Get Free Quote
+              </button>
+              <a href="https://wa.me/255000000000?text=Hi%20PameTours,%20I'm%20interested%20in%20the%206%20Days%20Northern%20Tanzania%20Expedition." target="_blank" class="bg-green-600 hover:bg-green-700 text-white text-xs font-bold py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-1">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Chat Expert
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package Card 4 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="300">
+          <div class="h-64 relative">
+            <img src="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+            <span class="absolute top-4 right-4 bg-brand-green text-brand-gold text-xs font-bold px-3 py-1 rounded-full">6 Days</span>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-2xl font-bold text-brand-green mb-2">6 Days Tanzania Wildlife Adventures</h3>
+              <p class="text-gray-600 text-sm mb-4">Focused wildlife tracking across Big Five hot spots with specialized safari vehicles.</p>
+              
+              <div class="flex gap-2 my-3">
+                <span class="text-xs bg-gray-100 text-gray-700 font-semibold px-2.5 py-1 rounded">Standard</span>
+                <span class="text-xs bg-amber-100 text-amber-800 font-semibold px-2.5 py-1 rounded">Mid-Range</span>
+                <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-1 rounded">Luxury</span>
+              </div>
+            </div>
+
+            <div class="border-t pt-4 grid grid-cols-1 sm:grid-cols-3 gap-2 text-center">
+              <button @click="activePage = 'packages'; selectedPackage = 4" class="bg-brand-green hover:bg-brand-dark text-white text-xs font-bold py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-1">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i> View Itinerary
+              </button>
+              <button @click="modalOpen = true" class="bg-brand-gold hover:bg-yellow-500 text-brand-dark text-xs font-bold py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-1">
+                <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Get Free Quote
+              </button>
+              <a href="https://wa.me/255000000000?text=Hi%20PameTours,%20I'm%20interested%20in%20the%206%20Days%20Wildlife%20Adventures." target="_blank" class="bg-green-600 hover:bg-green-700 text-white text-xs font-bold py-2 px-3 rounded-lg transition-all flex items-center justify-center gap-1">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Chat Expert
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== PACKAGES PAGE ==================== -->
+  <main x-show="activePage === 'packages'" x-transition class="py-12 max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-extrabold text-brand-green mb-3">Complete Safari Schedules & Itineraries</h1>
+      <p class="text-gray-600 max-w-2xl mx-auto">All itineraries cover full service from airport reception, transfers, luxury/mid-range/standard park accommodations, to departure.</p>
+    </div>
+
+    <!-- Package Detailed Schedules -->
+    <div class="space-y-12">
+      <!-- 4 Days Package -->
+      <div class="bg-white rounded-2xl shadow-md p-6 md:p-8 border border-gray-200" id="pkg-1">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b pb-4 mb-6">
+          <div>
+            <span class="text-brand-gold font-bold text-xs uppercase tracking-widest">Option 1</span>
+            <h2 class="text-2xl font-bold text-brand-green">4 Days Tanzania Safari Cultural and Expedition</h2>
+          </div>
+          <div class="mt-4 md:mt-0 flex gap-2">
+            <button @click="modalOpen = true" class="bg-brand-gold text-brand-dark px-4 py-2 rounded-lg text-xs font-bold">Get Free Quote</button>
+            <a href="https://wa.me/255000000000" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded-lg text-xs font-bold">WhatsApp Expert</a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2 space-y-4">
+            <div class="border-l-4 border-brand-green pl-4">
+              <h4 class="font-bold text-brand-green">Day 1: Airport Arrival & Hotel Transfer</h4>
+              <p class="text-sm text-gray-600">Pick-up from Kilimanjaro International Airport (JRO) or Arusha Airport. Briefing and check-in at Arusha Accommodation hotel.</p>
+            </div>
+            <div class="border-l-4 border-brand-green pl-4">
+              <h4 class="font-bold text-brand-green">Day 2: Tarangire National Park Drive</h4>
+              <p class="text-sm text-gray-600">Morning pickup from hotel, depart to Tarangire for full-day game drive known for elephant herds. Park accommodation check-in.</p>
+            </div>
+            <div class="border-l-4 border-brand-green pl-4">
+              <h4 class="font-bold text-brand-green">Day 3: Cultural Tour at Lake Eyasi (Hadzabe & Datoga)</h4>
+              <p class="text-sm text-gray-600">Early departure for Lake Eyasi to experience traditional hunting & blacksmith skills with Hadzabe & Datoga tribes.</p>
+            </div>
+            <div class="border-l-4 border-brand-green pl-4">
+              <h4 class="font-bold text-brand-green">Day 4: Ngorongoro Crater to Airport Transfer</h4>
+              <p class="text-sm text-gray-600">Descend into Ngorongoro Crater for half-day safari tracking Big Five. Return transfer to Arusha/Airport.</p>
+            </div>
+          </div>
+
+          <!-- Tier Options Card -->
+          <div class="bg-brand-sand p-5 rounded-xl border border-brand-gold/30">
+            <h4 class="font-bold text-brand-green mb-3 border-b border-brand-gold/30 pb-2">Accommodation Tier Costs</h4>
+            <ul class="space-y-3 text-sm">
+              <li class="flex justify-between"><strong>Standard Tier:</strong> <span class="text-brand-green font-semibold">Budget Tented Camps</span></li>
+              <li class="flex justify-between"><strong>Mid-Range Tier:</strong> <span class="text-brand-green font-semibold">3-Star Safari Lodges</span></li>
+              <li class="flex justify-between"><strong>Luxury Tier:</strong> <span class="text-brand-green font-semibold">5-Star Luxury Lodges</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 Days Package -->
+      <div class="bg-white rounded-2xl shadow-md p-6 md:p-8 border border-gray-200" id="pkg-2">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b pb-4 mb-6">
+          <div>
+            <span class="text-brand-gold font-bold text-xs uppercase tracking-widest">Option 2</span>
+            <h2 class="text-2xl font-bold text-brand-green">5 Days Tour in Tanzania</h2>
+          </div>
+          <div class="mt-4 md:mt-0 flex gap-2">
+            <button @click="modalOpen = true" class="bg-brand-gold text-brand-dark px-4 py-2 rounded-lg text-xs font-bold">Get Free Quote</button>
+            <a href="https://wa.me/255000000000" target="_blank" class="bg-green-600 text-white px-4 py-2 rounded-lg text-xs font-bold">WhatsApp Expert</a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2 space-y-4">
+            <div class="border-l-4 border-brand-gold pl-4">
+              <h4 class="font-bold text-brand-green">Day 1: Airport Pick-Up & Arrival Hotel</h4>
+              <p class="text-sm text-gray-600">Meet & greet at Airport, pickup transfer to Arusha hotel. Safari briefing and rest.</p>
+            </div>
+            <div class="border-l-4 border-brand-gold pl-4">
+              <h4 class="font-bold text-brand-green">Day 2: Tarangire National Park</h4>
+              <p class="text-sm text-gray-600">Full day game drive viewing baobab trees and huge elephant herds. Park lodge overnight.</p>
+            </div>
+            <div class="border-l-4 border-brand-gold pl-4">
+              <h4 class="font-bold text-brand-green">Day 3: Serengeti National Park Transit</h4>
+              <p class="text-sm text-gray-600">Drive via Ngorongoro conservation area to central Serengeti. Evening game drive.</p>
+            </div>
+            <div class="border-l-4 border-brand-gold pl-4">
+              <h4 class="font-bold text-brand-green">Day 4: Ngorongoro Crater Descent</h4>
+              <p class="text-sm text-gray-600">Explore crater floor for high-density predator viewing. Karatu lodge overnight.</p>
+            </div>
+            <div class="border-l-4 border-brand-gold pl-4">
+              <h4 class="font-bold text-brand-green">Day 5: Lake Manyara & Airport Drop-off</h4>
+              <p class="text-sm text-gray-600">Morning drive in Lake Manyara famous for tree-climbing lions. Transfer to Airport.</p>
+            </div>
+          </div>
+
+          <div class="bg-brand-sand p-5 rounded-xl border border-brand-gold/30">
+            <h4 class="font-bold text-brand-green mb-3 border-b border-brand-gold/30 pb-2">Accommodation Tier Costs</h4>
+            <ul class="space-y-3 text-sm">
+              <li class="flex justify-between"><strong>Standard Tier:</strong> <span class="text-brand-green font-semibold">Budget Tented Camps</span></li>
+              <li class="flex justify-between"><strong>Mid-Range Tier:</strong> <span class="text-brand-green font-semibold">3-Star Safari Lodges</span></li>
+              <li class="flex justify-between"><strong>Luxury Tier:</strong> <span class="text-brand-green font-semibold">5-Star Luxury Lodges</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== ACCOMMODATION PAGE ==================== -->
+  <main x-show="activePage === 'accommodation'" x-transition class="py-12 max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-extrabold text-brand-green mb-3">Our Handpicked Accommodations</h1>
+      <p class="text-gray-600 max-w-xl mx-auto">From city hotels on arrival to luxury tented camps inside iconic national parks.</p>
+    </div>
+
+    <!-- Tier Categories -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      <div class="bg-white rounded-2xl p-6 shadow border border-gray-100">
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Standard Tier</h3>
+        <p class="text-sm text-gray-600 mb-4">Comfortable, clean budget lodges and permanent canvas tented camps with en-suite bathrooms.</p>
+        <span class="inline-block bg-gray-100 text-gray-800 font-bold text-xs px-3 py-1 rounded">Great Value</span>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow border border-brand-gold">
+        <h3 class="text-xl font-bold text-brand-green mb-2">Mid-Range Tier</h3>
+        <p class="text-sm text-gray-600 mb-4">Well-appointed safari lodges featuring pools, fine local cuisine, and prime park locations.</p>
+        <span class="inline-block bg-amber-100 text-amber-800 font-bold text-xs px-3 py-1 rounded">Most Popular</span>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow border border-brand-green">
+        <h3 class="text-xl font-bold text-brand-green mb-2">Luxury Tier</h3>
+        <p class="text-sm text-gray-600 mb-4">Exclusive 5-star wilderness lodges and luxury camps with personalized butler service.</p>
+        <span class="inline-block bg-emerald-100 text-emerald-800 font-bold text-xs px-3 py-1 rounded">Premium</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== ABOUT US PAGE ==================== -->
+  <main x-show="activePage === 'about'" x-transition class="py-12 max-w-5xl mx-auto px-6">
+    <div class="bg-white rounded-2xl p-8 md:p-12 shadow-lg border border-gray-100">
+      <h1 class="text-4xl font-extrabold text-brand-green mb-6">About PameTours</h1>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        PameTours is an premier local safari and expedition tour operator based in Tanzania. We specialize in custom-tailored wilderness safaris, mountain trekking, and cultural journeys across Northern Tanzania.
+      </p>
+      <p class="text-gray-600 leading-relaxed">
+        With experienced native guides, customized 4x4 safari vehicles, and transparent tier pricing (Standard, Mid-Range, Luxury), we ensure every traveler experiences their dream African journey seamlessly from airport arrival to departure.
+      </p>
+    </div>
+  </main>
+
+  <!-- ==================== CONTACT US PAGE ==================== -->
+  <main x-show="activePage === 'contact'" x-transition class="py-12 max-w-4xl mx-auto px-6">
+    <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+      <h1 class="text-3xl font-bold text-brand-green mb-6 text-center">Contact Safari Experts</h1>
+      <form class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-brand-green uppercase mb-1">Your Name</label>
+          <input type="text" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:border-brand-gold text-sm" placeholder="John Doe">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-brand-green uppercase mb-1">Email Address</label>
+          <input type="email" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:border-brand-gold text-sm" placeholder="john@example.com">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-brand-green uppercase mb-1">Package Choice</label>
+          <select class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm">
+            <option>4 Days Tanzania safari Cultural and Expedition</option>
+            <option>5 Days Tour in Tanzania</option>
+            <option>6 days Northern Tanzania safari Expedition</option>
+            <option>6 Days Tanzania Wildlife Adventures</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-brand-green uppercase mb-1">Message</label>
+          <textarea rows="4" class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:border-brand-gold text-sm" placeholder="Tell us your travel dates and group size..."></textarea>
+        </div>
+        <button type="button" class="w-full bg-brand-gold hover:bg-yellow-500 text-brand-dark font-bold py-3 rounded-lg shadow transition-all">Submit Request</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- ==================== FREE SAFARI QUOTE MODAL ==================== -->
+  <div x-show="modalOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" x-transition>
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 mx-4 relative shadow-2xl">
+      <button @click="modalOpen = false" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      <h3 class="text-2xl font-bold text-brand-green mb-2">Get Free Safari Quote</h3>
+      <p class="text-xs text-gray-500 mb-4">Request standard, mid-range, or luxury quotes for your customized trip.</p>
+      
+      <form class="space-y-3">
+        <input type="text" placeholder="Full Name" class="w-full px-4 py-2 rounded-lg border text-sm">
+        <input type="email" placeholder="Email Address" class="w-full px-4 py-2 rounded-lg border text-sm">
+        <select class="w-full px-4 py-2 rounded-lg border text-sm">
+          <option>Preferred Tier: Standard</option>
+          <option>Preferred Tier: Mid-Range</option>
+          <option>Preferred Tier: Luxury</option>
+        </select>
+        <textarea rows="3" placeholder="Travel details..." class="w-full px-4 py-2 rounded-lg border text-sm"></textarea>
+        <button type="button" @click="modalOpen = false; alert('Thank you! Our expert will contact you within 2 hours.')" class="w-full bg-brand-green text-white font-bold py-2.5 rounded-lg text-sm">Send Quote Request</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-brand-dark text-gray-400 py-10 border-t border-white/10 text-center text-sm">
+    <div class="max-w-7xl mx-auto px-6 space-y-4">
+      <div class="flex justify-center items-center space-x-2 text-white font-bold tracking-widest">
+        <span>PAME TOURS</span>
+      </div>
+      <p class="text-xs text-gray-400 max-w-2xl mx-auto">
+        &copy; 2026 all rights reserved. No part or content of this intangible asset shall be modified, copied or misused without the approval of the owner @pametours
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide Icons & AOS Animations
+    lucide.createIcons();
+    AOS.init({ duration: 800, once: true });
+
+    // Initialize Hero Swiper Slider
+    const swiper = new Swiper('.heroSlider', {
+      loop: true,
+      autoplay: { delay: 4000, disableOnInteraction: false },
+      effect: 'fade',
+      fadeEffect: { crossFade: true }
+    });
+  </script>
+</body>
+</html>
